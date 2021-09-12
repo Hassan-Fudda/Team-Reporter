@@ -21,7 +21,7 @@ const signup = () => {
                     members: []
             }
                 localStorage.setItem("reporter", JSON.stringify(reporter));
-                window.location.href = "./../login";
+                window.location.href = "./../Team-Reporter/login";
         }
         else{
                 valArea.style.display = "block";
@@ -52,7 +52,7 @@ const login = () => {
             let acquiredUser = users.find(val => reporter.users[val].email.toLowerCase() === email.toLowerCase() && reporter.users[val].password === password);
             if(acquiredUser){
                 localStorage.setItem("user", JSON.stringify(reporter.users[acquiredUser]));
-                window.location.href = "./../";
+                window.location.href = "./../Team-Reporter";
             }
             else{
                 valArea.style.display = "block";
@@ -73,7 +73,7 @@ const login = () => {
 const accessCheck = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
-        window.location.href = "./../";
+        window.location.href = "./../Team-Reporter";
     }
 }
 
@@ -99,7 +99,7 @@ const loggedIn = () => {
 
             user.admin.find(val => {
                 let anchorTag = teamCardHolder.appendChild(document.createElement("a"))
-                anchorTag.setAttribute("href", "./../teamsetting");
+                anchorTag.setAttribute("href", "./../Team-Reporter/teamsetting");
                 anchorTag.setAttribute("id", val);
                 let div = anchorTag.appendChild(document.createElement("div"))
                 div.classList.add("m-2", "alert", "alert-success");
@@ -146,7 +146,7 @@ const loggedIn = () => {
             user.members.find(val => {
                 
                 let anchorTag = memberTeamCardHolder.appendChild(document.createElement("a"))
-                anchorTag.setAttribute("href", "./../response");
+                anchorTag.setAttribute("href", "./../Team-Reporter/response");
                 let div = anchorTag.appendChild(document.createElement("div"))
                 div.classList.add("m-2", "alert", "alert-success");
                 div.setAttribute("role", "alert");
@@ -236,7 +236,7 @@ const addTeam = () => {
                     localStorage.setItem("reporter", JSON.stringify(reporter));
                     localStorage.setItem("user", JSON.stringify(user));
 
-                    location.href = "./../";
+                    location.href = "./../Team-Reporter";
                 }
                 else {
                     saveBtn.textContent = "Incorrect Email!";
@@ -262,7 +262,7 @@ const addTeam = () => {
         }, 2000);
     }
     else {
-        location.href = "./../login"
+        location.href = "./../Team-Reporter/login"
     }
 }
 
@@ -304,7 +304,7 @@ const teamSetting = () => {
 
     }
     else {
-        location.href = "./../";
+        location.href = "./../Team-Reporter";
     }
 }
 
@@ -448,7 +448,7 @@ const deleteTeam = () => {
     delete reporter.teams[selectedTeam];
     localStorage.setItem("user", JSON.stringify(reporter.users[user.uid]));
     localStorage.setItem("reporter", JSON.stringify(reporter));
-    location.href = "./../";
+    location.href = "./../Team-Reporter";
 
 }
 
@@ -718,6 +718,6 @@ const logout = () => {
     localStorage.removeItem("user")
     
     setTimeout(() => {
-        location.href = "./../login";
+        location.href = "./../Team-Reporter/login";
     }, 2000);
 }
