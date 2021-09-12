@@ -21,7 +21,7 @@ const signup = () => {
                     members: []
             }
                 localStorage.setItem("reporter", JSON.stringify(reporter));
-                window.location.href = "./../Team-Reporter/login";
+                window.location.href = "./../login";
         }
         else{
                 valArea.style.display = "block";
@@ -52,7 +52,7 @@ const login = () => {
             let acquiredUser = users.find(val => reporter.users[val].email.toLowerCase() === email.toLowerCase() && reporter.users[val].password === password);
             if(acquiredUser){
                 localStorage.setItem("user", JSON.stringify(reporter.users[acquiredUser]));
-                window.location.href = "./../Team-Reporter";
+                window.location.href = "./../";
             }
             else{
                 valArea.style.display = "block";
@@ -73,7 +73,7 @@ const login = () => {
 const accessCheck = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {
-        window.location.href = "./../Team-Reporter";
+        window.location.href = "./../";
     }
 }
 
@@ -304,7 +304,7 @@ const teamSetting = () => {
 
     }
     else {
-        location.href = "./../Team-Reporter";
+        location.href = "./../";
     }
 }
 
@@ -448,7 +448,7 @@ const deleteTeam = () => {
     delete reporter.teams[selectedTeam];
     localStorage.setItem("user", JSON.stringify(reporter.users[user.uid]));
     localStorage.setItem("reporter", JSON.stringify(reporter));
-    location.href = "./../Team-Reporter";
+    location.href = "./../";
 
 }
 
